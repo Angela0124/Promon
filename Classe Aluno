@@ -1,0 +1,111 @@
+package promon1;
+       
+
+import java.util.Scanner;
+public class Aluno {
+        private String Nome;       
+        private int CPF;
+        private int RG;
+        private int Matricula;
+        private int DataDeNascimento;
+        private String Turma;
+        private String Turno;
+        private int AnoDeIngresso;
+        private String E_mail;
+        private int Telefone;
+        private String TipoSanguineo;
+        private String NomeDoPai;
+        private String NomeDaMae;
+        private String curso;
+        private String E_MailDoResponsavel;
+        
+       public static void CadastrarAluno(){
+    Scanner read = new Scanner(System.in);
+    System.out.println("Informe seus dados! Por Favor!");
+    System.out.println("Nome do Aluno: ");
+    String Nome = read.nextLine();
+    System.out.println("CPF do Aluno: ");
+    int CPF = read.nextInt();
+    System.out.println("RG do Aluno: ");
+    int RG = read.nextInt();
+    System.out.println("Matricula do Aluno: ");
+    int Matricula  = read.nextInt();
+    System.out.println("Data De nascimento do Aluno: ");
+   int DataDeNascimento = read.nextInt();
+   System.out.println("Turma  do Aluno: ");
+   String Turma =  read.nextLine();
+   System.out.println("Turno  do Aluno: ");
+   String Turno =  read.nextLine();
+   System.out.println("Ano de Ingresso do Aluno: ");
+   String AnoDeIngresso=  read.nextLine();
+   System.out.println("E_mail  do Aluno: ");
+   String E_mail =  read.nextLine();
+   System.out.println("Telefone  do Aluno: ");
+   int Telefone =  read.nextInt();
+   System.out.println("Tipo Sanguineo  do Aluno: ");
+   String TipoSanguineo =  read.nextLine();
+   System.out.println("Nome do Pai  : ");
+   String NomeDoPai =  read.nextLine();
+   System.out.println("Nome da Mãe  : ");
+   String NomeDaMae =  read.nextLine();
+   System.out.println("E_mail do Responsavel: ");
+   String E_mailDoResponsavel =  read.nextLine();
+   
+       
+       } 
+
+    /**
+     * @return the Nome
+     */
+    public String getNome() {
+        return Nome;
+    }
+
+    /**
+     * @param Nome the Nome to set
+     */
+    public void setNome(String Nome) {
+        this.Nome = Nome;
+    }
+
+    /**
+     * @return the CPF
+     */
+    public int getCPF() {
+        return CPF;
+    }
+
+    /**
+     * @param CPF the CPF to set
+     */
+    public void setCPF(int CPF) {
+        this.CPF = CPF;
+    }
+
+    /**
+     * @return the RG
+     */
+    public int getRG() {
+        return RG;
+    }
+
+    /**
+     * @param RG the RG to set
+     */
+    public void setRG(int RG) {
+        this.RG = RG;
+    }
+
+    /**
+     * @return the Matricula
+     */
+    public int getMatricula() {
+        return Matricula;
+    }
+
+    /**
+     * @param Matricula the Matricula to set
+     */
+    public void setMatricula(int Matricula) {
+        this.Matricula = Matricula;
+    }
