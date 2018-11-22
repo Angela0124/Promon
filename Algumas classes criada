@@ -1,0 +1,84 @@
+
+package inscricao;
+
+public class Inscricao {
+
+  boolean MediaAnual;
+  boolean status;
+  Aluno aluno;
+  
+public Inscricao EfetuarInscricao(){
+}
+public void AtualizarStatus (NovoStatus:boolean) (){
+
+}
+public String UploadDeDocumentos() {
+    
+}
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
+
+
+
+
+package classificacao;
+
+
+public class Classificacao {
+
+  public  String classificarAluno(){
+      
+      
+  }
+
+public Clas emitirClas(){
+    
+} 
+
+    public static void main(String[] args) {
+       
+    }
+    
+}
+
+
+
+package documento;
+
+
+public class Documento {
+String Propietario;
+ String Tipodoc;
+   
+    public static void main(String[] args) {
+      
+    }
+    
+}
+
+
+package depae;
+
+
+public class Depae {
+
+ String coordenador;
+String assistenteSocial;
+
+public boolean verificarDocumento() {
+     return false;
+    
+}
+public boolean AutorizarInscricao(){
+     return false;
+    
+}
+    public static void main(String[] args) {
+       
+    }
+    
+}
