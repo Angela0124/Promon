@@ -1,0 +1,22 @@
+
+package depae;
+
+
+public class Depae {
+
+ String coordenador;
+String assistenteSocial;
+
+public boolean verificarDocumento() {
+     return false;
+    
+}
+public boolean AutorizarInscricao(){
+     return false;
+    
+}
+    public static void main(String[] args) {
+       
+    }
+    
+}
