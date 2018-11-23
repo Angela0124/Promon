@@ -1,0 +1,395 @@
+import Conexao.ConexaoDB;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Depae;
+
+
+
+public class DepaeDao {
+    private Connection conexao=null;
+
+    public DepaeDao() {
+    conexao = ConexaoBD.getConexaoMySQL();
+    }
+    
+    //inserir
+    public boolean insert(Depae depae){ 
+        String sql = "INSERT INTO categoria (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Depae.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<Depae> select(){ 
+         String sql = "SELECT * FROM categoria";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<Depae> Depaes = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 Depae Depae = new Depae();
+                 Depae.setDescricao(resultset.getString("descricao"));
+                 Depaes.add(Depae);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return Depaes;
+    }
+    
+    //UPDATE
+    public boolean update (Depae Depae){ 
+        String sql = "UPDATE categoria SET Depae = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Depae.getDescricao());
+        statement.setInt(2, Depae.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (Depae Depae){
+        String sql = "DELETE FROM categoria WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, Depae.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+
+}
+
+
+
+import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Inscricao;
+
+
+
+public class InscricaoDao {
+    private Connection conexao=null;
+
+    public InscricaoDao() {
+    conexao = ConexaoDB.getConexaoDB();
+    }
+    
+    //inserir
+    public boolean insert(Inscricao inscricao){ 
+        String sql = "INSERT INTO categoria (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Inscricao.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<Inscricao> select(){ 
+         String sql = "SELECT * FROM categoria";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<Inscricao> Inscricoes = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 Inscricao Inscricao = new Inscricao();
+                 Inscricao.setDescricao(resultset.getString("descricao"));
+                 Inscricoes.add(Inscricao);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return Inscricoes;
+    }
+    
+    //UPDATE
+    public boolean update (Inscricao Inscricao){ 
+        String sql = "UPDATE categoria SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Inscricao.getDescricao());
+        statement.setInt(2, Inscricao.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (Inscricao Inscricao){
+        String sql = "DELETE FROM categoria WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, Inscricao.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+
+}
+
+
+import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Categoria;
+
+
+
+public class ClassificacaoDao {
+    private Connection conexao=null;
+
+    public ClassificacaoDao() {
+    conexao = ConexaoDB.getConexaoDB();
+    }
+    
+    //inserir
+    public boolean insert(Classificacao Classificacao){ 
+        String sql = "INSERT INTO categoria (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Classificacao.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<classificacao> select(){ 
+         String sql = "SELECT * FROM categoria";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<Classificacao> Classificacoes = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 Classificacao Classificacao = new Classificacao();
+                 Classificacao.setDescricao(resultset.getString("descricao"));
+                 Classificacoes.add(Classificacao);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return Classificacoes;
+    }
+    
+    //UPDATE
+    public boolean update (classificacao Classificacao){ 
+        String sql = "UPDATE categoria SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Classificacao.getDescricao());
+        statement.setInt(2, Classificacao.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (classificacao classificacao){
+        String sql = "DELETE FROM Classificacao WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, classificacao.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+
+}
+
+
+import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Documento;
+
+
+
+public class DocumentoDao {
+    private Connection conexao=null;
+
+    public DocumentoDao() {
+    conexao = ConexaoBD.getConexaoDB();
+    }
+    
+    //inserir
+    public boolean insert(Documento Documento){ 
+        String sql = "INSERT INTO Documento (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Documento.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<Documento> select(){ 
+         String sql = "SELECT * FROM categoria";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<Documento> Documentos = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 Documento Documento = new Documento();
+                 Documento.setDescricao(resultset.getString("descricao"));
+                 Documento.add(Documento);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return Documentos;
+    }
+    
+    //UPDATE
+    public boolean update (Documento Documento){ 
+        String sql = "UPDATE categoria SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, Documento.getDescricao());
+        statement.setInt(2, Documento.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (Documento Documento){
+        String sql = "DELETE FROM Documento WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, Documento.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+
+}

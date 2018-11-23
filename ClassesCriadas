@@ -1,0 +1,157 @@
+package inscricao;
+
+public class Inscricao {
+
+  boolean MediaAnual;
+  boolean status;
+  Aluno aluno;
+  
+public Inscricao EfetuarInscricao(){
+}
+public void AtualizarStatus (NovoStatus:boolean) (){
+
+}
+public String UploadDeDocumentos() {
+    
+}
+
+    public void setMediaAnual(boolean MediaAnual) {
+        this.MediaAnual = MediaAnual;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public boolean isMediaAnual() {
+        return MediaAnual;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public Inscricao(boolean MediaAnual, boolean status, Aluno aluno, boolean ) {
+        this.MediaAnual = MediaAnual;
+        this.status = status;
+        this.aluno = aluno;
+        this.<error> = <error>;
+    }
+
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
+
+
+
+package classificacao;
+
+
+public class Classificacao {
+
+  public  String classificarAluno(){
+      
+      
+  }
+
+public Clas emitirClas(){
+    
+} 
+
+    public static void main(String[] args) {
+       
+    }
+
+    public Classificacao() {
+    }
+    
+}
+
+
+package documento;
+
+
+public class Documento {
+String Propietario;
+ String Tipodoc;
+
+    public Documento(String Propietario, String Tipodoc) {
+        this.Propietario = Propietario;
+        this.Tipodoc = Tipodoc;
+    }
+
+    public String getPropietario() {
+        return Propietario;
+    }
+
+    public String getTipodoc() {
+        return Tipodoc;
+    }
+
+    public void setPropietario(String Propietario) {
+        this.Propietario = Propietario;
+    }
+
+    public void setTipodoc(String Tipodoc) {
+        this.Tipodoc = Tipodoc;
+    }
+   
+    public static void main(String[] args) {
+      
+    }
+    
+}
+
+
+package depae;
+
+
+public class Depae {
+
+ String coordenador;
+String assistenteSocial;
+
+public boolean verificarDocumento() {
+     return false;
+    
+}
+public boolean AutorizarInscricao(){
+     return false;
+    
+}
+    public static void main(String[] args) {
+       
+    }
+
+    public void setCoordenador(String coordenador) {
+        this.coordenador = coordenador;
+    }
+
+    public void setAssistenteSocial(String assistenteSocial) {
+        this.assistenteSocial = assistenteSocial;
+    }
+
+    public String getCoordenador() {
+        return coordenador;
+    }
+
+    public String getAssistenteSocial() {
+        return assistenteSocial;
+    }
+
+    public Depae(String coordenador, String assistenteSocial) {
+        this.coordenador = coordenador;
+        this.assistenteSocial = assistenteSocial;
+    }
+    
+}
