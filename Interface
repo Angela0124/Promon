@@ -1,0 +1,12 @@
+=====INTERFACE======
+
+
+package beans;
+/**
+ *
+ * @author Rosalice
+ */
+public interface Cancelamento {
+    
+    public boolean CancelarAtividade(boolean cancelamento);
+}
