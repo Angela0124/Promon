@@ -1,0 +1,176 @@
+======CLASSE BEANS AVALIACAOPROFESSOR======
+
+
+package beans;
+/**
+ *
+ * @author Rosalice
+ */
+public class AvaliacaoProfessor extends Avaliacao {
+    
+    int acessibilidade;
+    int qualidadeEnsino;
+    int metodologia;
+    
+    public AvaliacaoProfessor(double media, String comentario, String data) {
+        super(media, comentario, data);
+    }
+
+    public AvaliacaoProfessor(int acessibilidade, int qualidadeEnsino, int metodologia, double media, String comentario, String data) {
+        super(media, comentario, data);
+        this.acessibilidade = acessibilidade;
+        this.qualidadeEnsino = qualidadeEnsino;
+        this.metodologia = metodologia;
+    }
+
+    public int getAcessibilidade() {
+        return acessibilidade;
+    }
+
+    public int getQualidadeEnsino() {
+        return qualidadeEnsino;
+    }
+
+    public int getMetodologia() {
+        return metodologia;
+    }
+
+    public double getMedia() {
+        return media;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setAcessibilidade(int acessibilidade) {
+        this.acessibilidade = acessibilidade;
+    }
+
+    public void setQualidadeEnsino(int qualidadeEnsino) {
+        this.qualidadeEnsino = qualidadeEnsino;
+    }
+
+    public void setMetodologia(int metodologia) {
+        this.metodologia = metodologia;
+    }
+
+    public void setMedia(double media) {
+        this.media = media;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+    
+}
+
+
+======CLASSE DAO AVALIACAOPROFESSOR======
+
+
+package model.PacoteDAO;
+
+import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.AvaliacaoProfessor;
+
+
+public class AvaliacaoProfessorDAO {
+    private Connection conexao=null;
+
+    public AvaliacaoProfessorDAO() {
+    conexao = ConexaoBD.getConexaoBD();
+    }
+    
+    //inserir
+    public boolean insert(AvaliacaoProfessor avaliacaoProfessor){ 
+        String sql = "INSERT INTO categoria (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacaoProfessor.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<AvaliacaoProfessor> select(){ 
+         String sql = "SELECT * FROM avaliacaoProfessor";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<AvaliacaoProfessor> avaliacoesProfessor = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 AvaliacaoProfessor avaliacaoProfessor = new AvaliacaoProfessor();
+                 avaliacaoProfessor.setDescricao(resultset.getString("descricao"));
+                 avaliacoesProfessor.add(avaliacaoProfessor);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return avaliacoesProfessor;
+    }
+    
+    //UPDATE
+    public boolean update (AvaliacaoProfessor avaliacaoProfessor){ 
+        String sql = "UPDATE avaliacaoProfessor SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacaoProfessor.getDescricao());
+        statement.setInt(2, avaliacaoProfessor.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (AvaliacaoProfessor avaliacaoProfessor){
+        String sql = "DELETE FROM avaliacaoProfessor WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, avaliacaoProfessor.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+}
