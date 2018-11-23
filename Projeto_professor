@@ -1,0 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package professor;
+
+/**
+ *
+ * @author USUARIO
+ */
+public class Projeto_professor {
+    Professor professor;
+    Projeto projeto;
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public Projeto getProjeto() {
+        return projeto;
+    }
+
+    public Projeto_professor(Professor professor, Projeto projeto) {
+        this.professor = professor;
+        this.projeto = projeto;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public void setProjeto(Projeto projeto) {
+        this.projeto = projeto;
+    }
+    
+    
+}

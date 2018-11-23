@@ -1,7 +1,7 @@
-========CLASSE BEANS ALUNO========
+========CLASSE BEANS AVALIACAO========
 
 
-package beans;
+ package beans;
 /**
  *
  * @author Rosalice
@@ -10,47 +10,38 @@ public class Avaliacao {
     double media;
     String comentario;
     String data; 
-
-    public Avaliacao(double media, String comentario, String data) {
+     public Avaliacao(double media, String comentario, String data) {
         this.media = media;
         this.comentario = comentario;
         this.data = data;
     }
-
-    public double getMedia() {
+     public double getMedia() {
         return media;
     }
-
-    public String getComentario() {
+     public String getComentario() {
         return comentario;
     }
-
-    public String getData() {
+     public String getData() {
         return data;
     }
-
-    public void setMedia(double media) {
+     public void setMedia(double media) {
         this.media = media;
     }
-
-    public void setComentario(String comentario) {
+     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
-    public void setData(String data) {
+     public void setData(String data) {
         this.data = data;
     }
     
 }
 
 
-
-=======CLASSE DAO ALUNO========
-
-
-package model.PacoteDAO;
-
-import Conexao.ConexaoBD;
+ =======CLASSE DAO AVALIACAO========
+ 
+ 
+ package model.PacoteDAO;
+ import Conexao.ConexaoBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,11 +49,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.bean.Avaliacao;
-
-public class AvaliacaoDAO {
+ public class AvaliacaoDAO {
     private Connection conexao=null;
-
-    public AvaliacaoDAO() {
+     public AvaliacaoDAO() {
     conexao = ConexaoBD.getConexaoBD();
     }
     
