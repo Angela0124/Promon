@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package professor;
+
+
+/**
+ *
+ * @author USUARIO
+ */
+public class Professor {
+String nome;
+int matricula;
+int cpf;
+int Rg;
+boolean cadastrar;
+    
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public int getCpf() {
+        return cpf;
+    }
+
+    public int getRg() {
+        return Rg;
+    }
+
+
+    
+    public void mostrar_professor(){
+        System.out.println(nome);
+    }
+    public void dados_professor(){
+        System.out.println( nome);
+        System.out.println(matricula );
+        System.out.println(cpf);
+        System.out.println(Rg);
+    }
+   
+    public Professor Cadastrar_prof(Professor professor) {
+        return professor;
+        
+    }
+
+   public boolean cadastrar_projeto (){
+       if (cadastrar==true){
+           System.out.println("Cadastro do projeto foi efetuado com sucesso");}
+       else{
+           System.out.println("O projeto não foi cadastrado");
+       }
+    return cadastrar;
+                 
+   }
+    
+public static void planejamento (){   
+   
+}
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+    }
+    
+}
