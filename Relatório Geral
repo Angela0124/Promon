@@ -1,0 +1,137 @@
+
+package relatoriogeral;
+
+ 
+
+Import Java.util.Scanner;
+
+ 
+
+ 
+
+public class relatoriogeral extendes relatorio {
+
+ 
+
+ 
+
+ 
+
+ 
+
+    public relatoriogeral (  String descricao, Date datadaemissao, int horadaemissao ) {
+
+ 
+
+        super(descricao, datadaemissao, horadaemissao)
+
+ 
+
+}
+
+ 
+
+public de inserirdados(){
+
+   
+
+Scanner read = new Scanner(System.in);
+
+   
+
+ 
+
+   System.out.println("Nome do relatório: ");
+
+   String nomedorelatorio =  read.nextLine();
+
+ 
+
+ 
+
+ 
+
+ 
+
+System.out.println("descricao: ");
+
+String descricao = read.nextLine();
+
+ 
+
+System.out.println("data de emissao: ");
+
+String datadeemissao = read.nextLine();
+
+ 
+
+System.out.println("hora da emissao: ");
+
+String  horadaemissao = read.nextLine();
+
+ 
+
+}
+
+ 
+
+ 
+
+    public string getnomedorelatorio() {
+
+        return nomedorelatorio;
+
+    }
+
+    public void set nomedorelatorio(string nomedorelatorio) {
+
+        this.nomedorelatorio = nomedorelatorio;
+
+    }
+
+ 
+
+    public string getnomedorelatorio() {
+
+        return nomedorelatorio;
+
+    }
+
+ 
+
+ 
+
+ 
+
+    public void set descricao(string descricao) {
+
+        this.descricao = descricao;  
+
+ }
+
+ 
+
+ 
+
+    public string getdatadeemissao() {
+
+        return datadeemissao;
+
+    }
+
+ 
+
+ 
+
+ 
+
+    public void set datadeemissao (string datadeemissao) {
+
+        this.datadeemissao = datedeemissao;
+
+    }
+
+ 
+
+}
+
