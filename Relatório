@@ -1,0 +1,48 @@
+Package relatorio;
+
+ 
+
+import java.util.Date;
+
+ 
+
+public class Pessoa {
+
+ 
+
+ 
+
+    public String descricao;
+
+ 
+
+    public Date datadaemissao;
+
+ 
+
+    public int horadaemissao;
+
+ 
+
+     
+
+ 
+
+    public Pessoa(String descricao, Date datadaemissao, int horadaemissao ) {
+
+ 
+
+        this.descricao = descricao;
+
+        this.datadaemissao = datadaemissao;
+
+        this.horadaemissao = horadaemissao;
+
+ 
+
+    }
+
+ 
+
+}
+
