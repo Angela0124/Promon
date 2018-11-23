@@ -1,0 +1,199 @@
+=======CLASSE BEANS AVALIACAOMONITOR========
+
+
+package beans;
+
+/**
+ *
+ * @author Rosalice
+ */
+public class AvaliacaoMonitor extends Avaliacao {
+    
+    int planejamento;
+    int participacao;      
+    int presenca;
+    int proatividade;
+    int acessoria;
+
+    public AvaliacaoMonitor(double media, String comentario, String data) {
+        super(media, comentario, data);
+    }
+
+    public AvaliacaoMonitor(int planejamento, int participacao, int presenca, int proatividade, int acessoria, double media, String comentario, String data) {
+        super(media, comentario, data);
+        this.planejamento = planejamento;
+        this.participacao = participacao;
+        this.presenca = presenca;
+        this.proatividade = proatividade;
+        this.acessoria = acessoria;
+    }
+
+    public int getPlanejamento() {
+        return planejamento;
+    }
+
+    public int getParticipacao() {
+        return participacao;
+    }
+
+    public int getPresenca() {
+        return presenca;
+    }
+
+    public int getProatividade() {
+        return proatividade;
+    }
+
+    public int getAcessoria() {
+        return acessoria;
+    }
+
+    public double getMedia() {
+        return media;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setPlanejamento(int planejamento) {
+        this.planejamento = planejamento;
+    }
+
+    public void setParticipacao(int participacao) {
+        this.participacao = participacao;
+    }
+
+    public void setPresenca(int presenca) {
+        this.presenca = presenca;
+    }
+
+    public void setProatividade(int proatividade) {
+        this.proatividade = proatividade;
+    }
+
+    public void setAcessoria(int acessoria) {
+        this.acessoria = acessoria;
+    }
+
+    public void setMedia(double media) {
+        this.media = media;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    
+}
+
+
+=======CLASSE BEANS AVALIACAOMONITOR========
+
+
+
+package model.PacoteDAO;
+
+import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.AvaliacaoMonitorDAO;
+
+public class AvaliacaoMonitorDAO {
+    private Connection conexao=null;
+
+    public AvaliacaoMonitorDAO() {
+    conexao = ConexaoBD.getConexaoBD();
+    }
+    
+    //inserir
+    public boolean insert(AvaliacaoMonitor avaliacaoMonitor){ 
+        String sql = "INSERT INTO categoria (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacaoMonitor.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<AvaliacaoMonitor> select(){ 
+         String sql = "SELECT * FROM avaliacaoMonitor";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<AvaliacaoMonitor> avaliacoesMonitor = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 AvaliacaoMonitor avaliacaoMonitor = new AvaliacaoMonitor();
+                 avaliacaoMonitor.setDescricao(resultset.getString("descricao"));
+                 avaliacoesMonitor.add(avaliacaoMonitor);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return avaliacoesMonitor;
+    }
+    
+    //UPDATE
+    public boolean update (AvaliacaoMonitor avaliacaoMonitor){ 
+        String sql = "UPDATE avaliacaoMonitor SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacaoMonitor.getDescricao());
+        statement.setInt(2, avaliacaoMonitor.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (AvaliacaoMonitor avaliacaoMonitor){
+        String sql = "DELETE FROM avaliacaoMonitor WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, avaliacaoMonitor.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+}
+
