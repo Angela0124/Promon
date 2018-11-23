@@ -1,0 +1,111 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package professor;
+
+package model.DataAccessObject;
+
+import Conexao.ConexaoComMySQL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Categoria;
+
+/**
+ *
+ * @author Camila <Camila.Serrao>
+ */
+
+//classe Data Acess Object. Criar uma classe DOA para cada classe bean.
+//Exemplo com classe Categoria.
+
+public class EditalDao {
+    private Connection conexao=null;
+
+    public EditalDao() {
+    conexao = ConexaoDB.getConexaoDB();
+    }
+    
+    //inserir
+    public boolean insert(Edital edital){ 
+        String sql = "INSERT INTO categoria (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, edital.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoDB.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<Edital> select(){ 
+         String sql = "SELECT * FROM categoria";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<Edital> edital = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 Edital edital = new Edital();
+                 Edital.setDescricao(resultset.getString("descricao"));
+                 Edital.add(edital);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoDB.FecharConexao();
+         }
+         return edital;
+    }
+    
+    //UPDATE
+    public boolean update (Edital edital){ 
+        String sql = "UPDATE categoria SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, edital.getDescricao());
+        statement.setInt(2, edital.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoDB.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (Edital edital){
+        String sql = "DELETE FROM categoria WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, edital.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoDB.FecharConexao();
+        }
+    }
+}
