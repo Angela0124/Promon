@@ -1,10 +1,11 @@
-classe de
 
-
-
- package de;
+package de;
 
 import java.util.Scanner;
+
+import java.util.Date;
+
+ 
 
  
 
@@ -12,11 +13,13 @@ public class edital implements cancelamento {
 
  
 
- 
-
 Private String nomedacordenacao;
 
-Private String edital;
+ public String descricao;
+
+ public Date datadaemissao;
+
+ public Date datafinal ;
 
  
 
@@ -40,27 +43,60 @@ String nomedacordenacao = read.nextLine();
 
  
 
+}
+
+ public edital (Date datadaemissao, Date datafinal , String descricao) {
+
+ 
+
+               this.datadaemissao = datadaemissao;
+
+        this.datafinal = datafinal;
+
+ this.descricao = descricao;
+
  
 
  
 
-   System.out.println("Nome do edital: ");
+System.out.println("descricao: ");
 
-   String edital =  read.nextLine();
+   
+
+String descricao = read.nextLine();
+
+ 
+
+System.out.println("data de emissao: ");
+
+   
+
+String datadeemissao = read.nextLine();
 
  
 
- 
+System.out.println("data final: ");
 
- 
+   
+
+String datafinal = read.nextLine();
+
 
 }
 
-  
+ 
 
  
 
-    public String getnomedacordenacao() {
+ 
+
+ 
+
+     
+
+ 
+
+   public String getnomedacordenacao() {
 
         return nomedacordenacao;
 
@@ -111,3 +147,4 @@ cancelamento
  
 
 }
+
