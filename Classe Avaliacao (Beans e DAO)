@@ -1,0 +1,135 @@
+========CLASSE BEANS AVALIACAO========
+
+
+ package beans;
+/**
+ *
+ * @author Rosalice
+ */
+public class Avaliacao {
+    double media;
+    String comentario;
+    String data; 
+     public Avaliacao(double media, String comentario, String data) {
+        this.media = media;
+        this.comentario = comentario;
+        this.data = data;
+    }
+     public double getMedia() {
+        return media;
+    }
+     public String getComentario() {
+        return comentario;
+    }
+     public String getData() {
+        return data;
+    }
+     public void setMedia(double media) {
+        this.media = media;
+    }
+     public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+     public void setData(String data) {
+        this.data = data;
+    }
+    
+}
+
+
+ =======CLASSE DAO AVALIACAO========
+ 
+ 
+ package model.PacoteDAO;
+ import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.Avaliacao;
+ public class AvaliacaoDAO {
+    private Connection conexao=null;
+     public AvaliacaoDAO() {
+    conexao = ConexaoBD.getConexaoBD();
+    }
+    
+    //inserir
+    public boolean insert(Avaliacao avaliacao){ 
+        String sql = "INSERT INTO avalaiacao (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacao.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<Avaliacao> select(){ 
+         String sql = "SELECT * FROM avalaiacao";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<Avaliacao> avaliacoes = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 Avaliacao Avaliacao = new Avaliacao();
+                 avaliacao.setDescricao(resultset.getString("descricao"));
+                 avaliacoes.add(avaliacao);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return avaliacoes;
+    }
+    
+    //UPDATE
+    public boolean update (Avaliacao avaliacao){ 
+        String sql = "UPDATE categoria SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacao.getDescricao());
+        statement.setInt(2, avaliacao.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (Avaliacao avaliacao){
+        String sql = "DELETE FROM categoria WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, avaliacao.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+}
