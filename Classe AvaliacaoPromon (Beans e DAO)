@@ -1,0 +1,141 @@
+=======CLASSE BEANS AVALIACAOPROMON=======
+
+
+package beans;
+import java.util.Scanner;
+import java.util.Date;
+
+/**
+ *
+ * @author Rosalice
+ */
+public class AvaliacaoPromon extends Avaliacao {
+
+    int beneficios;
+    int desempenho;
+
+    public AvaliacaoPromon(double media, String comentario, String data) {
+        super(media, comentario, data);
+    }
+
+    public AvaliacaoPromon(int beneficios, int desempenho, double media, String comentario, String data) {
+        super(media, comentario, data);
+        this.beneficios = beneficios;
+        this.desempenho = desempenho;
+    }
+    
+    public Class<AvaliacaoPromon> AvaliarPromon(){
+        Scanner read = new Scanner(System.in);
+        System.out.println("Data: ");
+        data = read.nextLine();
+        System.out.println("Em uma escala entre 1 e 5, como você avalia os benefícios gerados pelo Programa de Monitoria?");
+        beneficios = read.nextInt();
+        System.out.println("Em uma escala entre 1 e 5, como você avalia o desempenho do Programa de Monitoria?");
+        beneficios = read.nextInt();
+        media = (beneficios+desempenho)/2;
+        System.out.println("Média da Avaliação referente ao PROMON: "+media);
+        return AvaliacaoPromon.class;
+    }
+    
+}
+
+
+=======CLASSE DAO AVALIACAOPROMON=======
+
+
+package model.PacoteDAO;
+
+import Conexao.ConexaoBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import model.bean.AvaliacaoPromon;
+
+public class AvaliacaoPromonDAO {
+    private Connection conexao=null;
+
+    public AvaliacaoPromonDAO() {
+    conexao = ConexaoBD.getConexaoBD();
+    }
+    
+    //inserir
+    public boolean insert(AvaliacaoPromon avaliacaoPromon){ 
+        String sql = "INSERT INTO avaliacaoPromon (descricao) VALUES (?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacaoPromon.getDescricao());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<AvaliacaoPromon> select(){ 
+         String sql = "SELECT * FROM avaliacoesPromon";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<AvaliacaoPromon> avaliacoesPromon = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 AvaliacaoPromon avaliacaoPromon = new AvaliacaoPromon();
+                 avaliacaoPromon.setDescricao(resultset.getString("descricao"));
+                 avaliacoesPromon.add(AvaliacaoPromon);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             ConexaoBD.FecharConexao();
+         }
+         return avaliacoesPromon;
+    }
+    
+    //UPDATE
+    public boolean update (AvaliacaoPromon avaliacaoPromon){ 
+        String sql = "UPDATE avaliacaoPromon SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, avaliacaoPromon.getDescricao());
+        statement.setInt(2, avaliacaoPromon.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (AvaliacaoPromon avaliacaoPromon){
+        String sql = "DELETE FROM avaliacaoPromon WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, avaliacaoPromon.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            ConexaoBD.FecharConexao();
+        }
+    }
+}
