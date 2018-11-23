@@ -1,0 +1,88 @@
+package de;
+
+import java.util.Scanner;
+
+import java.util.Date;
+
+public class edital implements cancelamento {
+
+Private String nomedacordenacao;
+
+public String descricao;
+
+public Date datadaemissao;
+
+public Date datafinal ;
+
+public de inserirdados(){
+
+Scanner read = new Scanner(System.in);
+
+System.out.println("Nome da cordenação: ");
+
+String nomedacordenacao = read.nextLine();
+
+}
+
+public edital (Date datadaemissao, Date datafinal , String descricao) {
+
+           this.datadaemissao = datadaemissao;
+
+    this.datafinal = datafinal;
+this.descricao = descricao;
+
+System.out.println("descricao: ");
+
+String descricao = read.nextLine();
+
+System.out.println("data de emissao: ");
+
+String datadeemissao = read.nextLine();
+
+System.out.println("data final: ");
+
+String datafinal = read.nextLine();
+
+}
+
+public String getnomedacordenacao() {
+
+    return nomedacordenacao;
+
+}
+
+
+
+
+
+public void setnomedacordenacao(String nomedacordenacao) {
+
+    this.nomedacordenacao = nomedacordenacao;
+
+}
+
+
+
+
+
+public string getedital() {
+
+    return edital;
+
+}
+
+
+
+
+
+
+
+public void set edital(string edital) {
+
+    this.edital = edital;
+
+}
+@override
+
+cancelamento
+
