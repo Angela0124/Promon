@@ -1,0 +1,113 @@
+classe de
+
+
+
+ package de;
+
+import java.util.Scanner;
+
+ 
+
+public class edital implements cancelamento {
+
+ 
+
+ 
+
+Private String nomedacordenacao;
+
+Private String edital;
+
+ 
+
+ 
+
+public de inserirdados(){
+
+   
+
+Scanner read = new Scanner(System.in);
+
+   
+
+System.out.println("Nome da cordenação: ");
+
+   
+
+String nomedacordenacao = read.nextLine();
+
+ 
+
+ 
+
+ 
+
+ 
+
+   System.out.println("Nome do edital: ");
+
+   String edital =  read.nextLine();
+
+ 
+
+ 
+
+ 
+
+}
+
+  
+
+ 
+
+    public String getnomedacordenacao() {
+
+        return nomedacordenacao;
+
+    }
+
+ 
+
+   
+
+    public void setnomedacordenacao(String nomedacordenacao) {
+
+        this.nomedacordenacao = nomedacordenacao;
+
+    }
+
+ 
+
+   
+
+    public string getedital() {
+
+        return edital;
+
+    }
+
+ 
+
+  
+
+   
+
+    public void set edital(string edital) {
+
+        this.edital = edital;
+
+    }
+
+ 
+
+@Override
+
+ 
+
+cancelamento
+
+ 
+
+ 
+
+}
