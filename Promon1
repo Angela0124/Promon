@@ -1,0 +1,26 @@
+package promon1;
+
+import PacoteConexao.ConexaoBD;
+import model.bean.AlunoDAO;
+
+
+public class Promon1 {
+
+
+    public static void main(String[] args) {
+        System.out.println(ConexaoBD.status);
+        ConexaoBD.getConexaoBD();
+        System.out.println(ConexaoBD.status);
+        
+        Aluno a = new Aluno();
+        a.CadastrarAluno();
+   
+        AlunoDAO DAO= new AlunoDAO ();
+        DAO.insert(a);  
+      
+
+    }
+    
+    
+    
+}
