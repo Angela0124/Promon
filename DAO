@@ -1,0 +1,124 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.bean;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import promon1.Aluno;
+
+
+public class AlunoDAO {
+  private Connection conexao=null;
+
+    public AlunoDAO() {
+    conexao = PacoteConexao.ConexaoBD.getConexaoBD();
+    }
+    
+    //inserir
+    public boolean insert(Aluno aluno){ 
+        String sql = "INSERT INTO Aluno(nome, CPF,RG,Matricula,DataDeNascimento,Turma,Turno,AnoDeIngresso,E_mail,Telefone,TipoSanguineo,NomeDoPai,NomeDaMae,Curso) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, aluno.getNome());
+        statement.setInt(2, aluno.getCPF());
+        statement.setInt(3, aluno.getRG());
+        statement.setInt(4, aluno.getMatricula());
+        statement.setString(5, aluno.getDataDeNascimento());
+        statement.setString(6, aluno.getTurma());
+        statement.setString(7, aluno.getTurno());
+        statement.setInt(8, aluno.getAnoDeIngresso());
+        statement.setString(9, aluno.getE_mail()); 
+        statement.setInt(10, aluno.getTelefone());
+        statement.setString(11, aluno.getTipoSanguineo());
+        statement.setString(12, aluno.getNomeDoPai());
+        statement.setString(13, aluno.getNomeDaMae());
+        statement.setString(14, aluno.getCurso());               
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            PacoteConexao.ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //SELECT
+    public List<AlunoDAO> select(){ 
+         String sql = "SELECT * FROM Aluno";
+         PreparedStatement statement = null;
+         ResultSet resultset = null;
+         List<AlunoDAO> categorias = new ArrayList<>();
+         try{
+             statement = conexao.prepareStatement(sql);
+             resultset = statement.executeQuery();
+             while(resultset.next()){
+                 AlunoDAO categoria = new AlunoDAO();
+                PacoteConexao.ConexaoBD.setDescricao(resultset.getString("descricao"));
+                 categorias.add(categoria);
+             }
+         }catch(SQLException e ){
+             System.out.println("erro "+e);
+         }
+         finally{
+             PacoteConexao.ConexaoBD.FecharConexao();
+         }
+         return categorias;
+    }
+    
+    //UPDATE
+    public boolean update (AlunoDAO categoria){ 
+        String sql = "UPDATE categoria SET descricao = ? WHERE id= ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setString(1, PacoteConexao.ConexaoBD.getDescricao());
+        statement.setInt(2, PacoteConexao.ConexaoBD.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            boolean FecharConexao;
+            FecharConexao = PacoteConexao.ConexaoBD.FecharConexao();
+        }
+    }
+    
+    //DELETE
+    public boolean delete (AlunoDAO categoria){
+        String sql = "DELETE FROM categoria WHERE id = ?";
+        PreparedStatement statement = null;
+        try{
+        statement = conexao.prepareStatement(sql);
+        statement.setInt(1, PacoteConexao.ConexaoBD.getId());
+        statement.executeUpdate();
+        return true;
+    }catch (SQLException e){
+            System.out.println("erro: "+e);
+            return false;
+    }finally{
+            //fechar conexao
+            PacoteConexao.ConexaoBD.FecharConexao();
+        }
+   
+  }
+    
+    
+    
+    
+    
+    
+}
+  
+
