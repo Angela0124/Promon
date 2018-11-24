@@ -1,0 +1,252 @@
+
+package promon1;     
+
+import java.sql.Connection;
+import java.util.Scanner;
+public class Aluno {
+        private String Nome;       
+        private int CPF;
+        private int RG;
+        private int Matricula;
+        private String DataDeNascimento;
+        private String Turma;
+        private String Turno;
+        private int AnoDeIngresso;
+        private String E_mail;
+        private int Telefone;
+        private String TipoSanguineo;
+        private String NomeDoPai;
+        private String NomeDaMae;
+        private String curso;       
+
+    
+       public void CadastrarAluno(){
+    Scanner read = new Scanner(System.in);
+    System.out.println("INFORME SEUS DADOS!POR FAVOR!");
+    System.out.println("Nome do Aluno: ");
+    String Nome = read.nextLine();
+    System.out.println("CPF do Aluno: ");
+    int CPF = read.nextInt();
+    System.out.println("RG do Aluno: ");
+    int RG = read.nextInt();
+    System.out.println("Matricula do Aluno: ");
+    int Matricula  = read.nextInt();
+   System.out.println("Data De nascimento do Aluno: ");
+   String DataDeNascimento = read.nextLine();
+   DataDeNascimento = read.nextLine();
+   System.out.println("Turma  do Aluno: ");
+   String Turma =  read.nextLine();
+   System.out.println("Turno  do Aluno: ");
+   String Turno =  read.nextLine();
+   System.out.println("Ano de Ingresso do Aluno: ");
+   String AnoDeIngresso=  read.nextLine();
+   System.out.println("E_mail  do Aluno: ");
+   String E_mail =  read.nextLine();
+   System.out.println("Telefone  do Aluno: ");
+   int Telefone =  read.nextInt();
+   
+   
+   System.out.println("Tipo Sanguineo  do Aluno: ");
+   String TipoSanguineo =  read.nextLine();
+   DataDeNascimento = read.nextLine();
+   System.out.println("Nome do Pai  : ");
+   String NomeDoPai =  read.nextLine();
+   System.out.println("Nome da Mãe  : ");
+   String NomeDaMae =  read.nextLine(); 
+       } 
+
+    /**
+     * @param CPF the CPF to set
+     */
+    public void setCPF(int CPF) {
+        this.CPF = CPF;
+    }
+
+    /**
+     * @return the RG
+     */
+    public int getRG() {
+        return RG;
+    }
+
+    /**
+     * @param RG the RG to set
+     */
+    public void setRG(int RG) {
+        this.RG = RG;
+    }
+
+    /**
+     * @return the Matricula
+     */
+    public int getMatricula() {
+        return Matricula;
+    }
+
+    /**
+     * @param Matricula the Matricula to set
+     */
+    public void setMatricula(int Matricula) {
+        this.Matricula = Matricula;
+    }
+
+    /**
+     * @return the DataDeNascimento
+     */
+    public String getDataDeNascimento() {
+        return DataDeNascimento;
+    }
+
+    /**
+     * @param DataDeNascimento the DataDeNascimento to set
+     */
+    public void setDataDeNascimento(String DataDeNascimento) {
+        this.DataDeNascimento = DataDeNascimento;
+    }
+
+    /**
+     * @return the Turma
+     */
+    public String getTurma() {
+        return Turma;
+    }
+
+    /**
+     * @param Turma the Turma to set
+     */
+    public void setTurma(String Turma) {
+        this.Turma = Turma;
+    }
+
+    /**
+     * @return the Turno
+     */
+    public String getTurno() {
+        return Turno;
+    }
+
+    /**
+     * @param Turno the Turno to set
+     */
+    public void setTurno(String Turno) {
+        this.Turno = Turno;
+    }
+
+    /**
+     * @return the AnoDeIngresso
+     */
+    public int getAnoDeIngresso() {
+        return AnoDeIngresso;
+    }
+
+    /**
+     * @param AnoDeIngresso the AnoDeIngresso to set
+     */
+    public void setAnoDeIngresso(int AnoDeIngresso) {
+        this.AnoDeIngresso = AnoDeIngresso;
+    }
+
+    /**
+     * @return the E_mail
+     */
+    public String getE_mail() {
+        return E_mail;
+    }
+
+    /**
+     * @param E_mail the E_mail to set
+     */
+    public void setE_mail(String E_mail) {
+        this.E_mail = E_mail;
+    }
+
+    /**
+     * @return the Telefone
+     */
+    public int getTelefone() {
+        return Telefone;
+    }
+
+    /**
+     * @param Telefone the Telefone to set
+     */
+    public void setTelefone(int Telefone) {
+        this.Telefone = Telefone;
+    }
+
+    /**
+     * @return the TipoSanguineo
+     */
+    public String getTipoSanguineo() {
+        return TipoSanguineo;
+    }
+
+    /**
+     * @param TipoSanguineo the TipoSanguineo to set
+     */
+    public void setTipoSanguineo(String TipoSanguineo) {
+        this.TipoSanguineo = TipoSanguineo;
+    }
+
+    /**
+     * @return the NomeDoPai
+     */
+    public String getNomeDoPai() {
+        return NomeDoPai;
+    }
+
+    /**
+     * @param NomeDoPai the NomeDoPai to set
+     */
+    public void setNomeDoPai(String NomeDoPai) {
+        this.NomeDoPai = NomeDoPai;
+    }
+
+    /**
+     * @return the NomeDaMae
+     */
+    public String getNomeDaMae() {
+        return NomeDaMae;
+    }
+
+    /**
+     * @param NomeDaMae the NomeDaMae to set
+     */
+    public void setNomeDaMae(String NomeDaMae) {
+        this.NomeDaMae = NomeDaMae;
+    }
+
+    /**
+     * @return the curso
+     */
+    public String getCurso() {
+        return curso;
+    }
+
+    /**
+     * @param curso the curso to set
+     */
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getNome() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
+    public static class ConexaoComMySQL {
+
+        public static Connection getConexaoBD() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        public ConexaoComMySQL() {
+        }
+    }
+
+        
+}
+
+
