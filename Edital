@@ -1,0 +1,65 @@
+
+package professor;
+
+import java.util.Date;
+
+/**
+ *
+ * @author USUARIO
+ */
+public class Edital {
+Date DataInicio;
+Date DataFinal;
+int N_Edital;
+String Descricao;
+
+    public Edital(Date DataInicio, Date DataFinal, int N_Edital, String Descricao) {
+        this.DataInicio = DataInicio;
+        this.DataFinal = DataFinal;
+        this.N_Edital = N_Edital;
+        this.Descricao = Descricao;
+    }
+
+    Edital() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setDataInicio(Date DataInicio) {
+        this.DataInicio = DataInicio;
+    }
+
+    public void setDataFinal(Date DataFinal) {
+        this.DataFinal = DataFinal;
+    }
+
+    public void setN_Edital(int N_Edital) {
+        this.N_Edital = N_Edital;
+    }
+
+    public void setDescricao(String Descricao) {
+        this.Descricao = Descricao;
+    }
+
+
+    public Date getDataInicio() {
+        return DataInicio;
+    }
+
+    public Date getDataFinal() {
+        return DataFinal;
+    }
+
+    public int getN_Edital() {
+        return N_Edital;
+    }
+
+    public String getDescricao() {
+        return Descricao;
+    }
+
+    int getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+        
+        
+}
